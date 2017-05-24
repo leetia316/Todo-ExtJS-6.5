@@ -1,0 +1,66 @@
+Ext.define('TODO.view.todo.TodoList',{
+    extend:"Ext.grid.Grid",
+    requires:[
+        'TODO.view.todo.TodoModel'
+    ],
+    alias:'widget.todolist',
+    minWidth:400,
+    viewModel:'todo',
+    controller: 'todo',
+    bind:{
+        store:'{todo}'
+    },
+    items:[{
+        xtype:'toolbar',
+        docked:'top',
+        items:[
+            {
+                xtype:'button',
+                text:'Show Completed',
+                enableToggle:true,
+                toggleHandler:'onToggleComplete'
+            }
+        ]
+    },{
+        xtype:'toolbar',
+        layout:'hbox',
+        docked:'top',
+        items:[
+            {
+                xtype:'textfield',
+                name:'tododesc',
+                reference:'tododescfield',
+                flex:1
+            },{
+                xtype:'button',
+                text:'ADD',
+                handler:'onAddTodo'
+            }
+        ]
+    }],
+    columns:[
+        {
+            xtype:'checkcolumn',
+            dataIndex:'completed',
+            sortable:false,
+        },
+        {
+            xtype:'textcolumn',
+            text:'Description',
+            flex:1,
+            dataIndex:"todoDesc"
+        },{
+            xtype:"templatecolumn",
+            text:" Action",
+            sortable:false,
+            cell:{
+                encodeHtml:false,
+                tpl:"<div style=' width: 100%; text-align: center !important; cursor:pointer;' class='fa fa-close'> </div>"
+            }
+
+        }
+    ],
+    listeners:{
+        childtap:'onTodoListTap'
+    }
+});

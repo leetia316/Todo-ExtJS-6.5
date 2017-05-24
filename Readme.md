@@ -6,7 +6,7 @@ Example TODO application with Ext JS 6.5 Modern toolkit
  * Sencha Ext JS SDK - 6.5+
  * Sencha Cmd - 6.5+
 
-## To Run This Application
+## Steps To Run This Application
 1. Clone the repo
 2. `cd  /project/root/folder`
 3. Run the following command to add Ext JS SDK to the application:
